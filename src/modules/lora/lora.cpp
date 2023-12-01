@@ -29,7 +29,7 @@ u1_t os_getRegion (void) { return LMIC_regionCode(0); }
 const unsigned TX_INTERVAL = 60000;
 
 void onLmicEvent (ev_t ev) {
-    printf("%d: ", os_getTime());
+    printf("%ld: ", os_getTime());
     switch(ev) {
         case EV_SCAN_TIMEOUT:
             printf("EV_SCAN_TIMEOUT\n");
@@ -265,7 +265,7 @@ int
 lora_main(int argc, char *argv[])
 {
     int opt;
-    int optind = 1;
+    int myoptind = 1;
     const char* optarg;
     int setargs = 0;
 
@@ -273,7 +273,7 @@ lora_main(int argc, char *argv[])
     extraordinary_dr = -1;
     extraordinary_dr_period = -1;
 
-    while ((opt = px4_getopt(argc, argv, "n:a:d:s:x:p:", &optind, &optarg)) != EOF) {
+    while ((opt = px4_getopt(argc, argv, "n:a:d:s:x:p:", &myoptind, &optarg)) != EOF) {
         switch (opt) {
         case 'n':
             if (!parse_hex("network session key", optarg, NWKSKEY, sizeof(NWKSKEY)*2))

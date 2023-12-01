@@ -20,7 +20,7 @@ lsbus_main(int argc, char *argv[])
 	BusInstanceIterator iterator("lsbus", cli, 0);
 
 	while (iterator.next()) {
-		printf("bus=0x%x devid=0x%x\n", iterator.bus(), iterator.devid());
+		printf("bus=0x%x devid=0x%lx\n", iterator.bus(), iterator.devid());
 	}
 
 	return 0;
